@@ -101,7 +101,7 @@ class SessionMessage
         $messages = $this->session->get($this->getSessionKey());
 
         if (!empty($messages)) {
-            $messages = @\unserialize($messages, null);
+            $messages = @\unserialize($messages, [null]);
 
             if (\is_array($messages)) {
                 return $messages;
@@ -128,12 +128,12 @@ class SessionMessage
      */
     public function output($deleteMsg = true): string
     {
-        $content                    = '';
-        $messages                   = $this->getMessages();
-        $this->template->messages   = $messages;
+        $content    = '';
+        $messages   = $this->getMessages();
 
         if (\count($messages)) {
-            $content = $this->template->parse();
+            $this->template->messages   = $messages;
+            $content                    = $this->template->parse();
         }
 
         if (true === $deleteMsg) {

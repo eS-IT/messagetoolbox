@@ -22,7 +22,7 @@ class MyClass {
         $sm         = \Contao\System::getContainer()->get('esit_messagetoolbox.services.session.message');
         $messages   = $sm->getMessages();
         $sm->deleteMessages();  // Delete all Messages!
-        var_dump($messages);    // => $messages = Array of Messages!
+        var_dump($messages);    // Array of Messages!
     }
 
     public function outputMessages() {
