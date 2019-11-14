@@ -1,0 +1,9 @@
+<div class="messages">
+    <ul>
+        <?php foreach($this->messages as $msg): ?>
+        <li>
+            <?php echo $GLOBALS['TL_LANG']['MSC']['messagetoolbox']['output'][$msg] ?: $msg; ?>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
