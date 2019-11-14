@@ -31,17 +31,6 @@
         }
     },
     "extra": {
-        "contao-manager-plugin": "Esit\\Messagetoolbox\\Classes\\Contao\\Manager\\Plugin",
-        "composertoolbox": {
-            "require": {
-                "esit/messagetoolbox": "^1.0"
-            },
-            "repositories": {
-                "esit/messagetoolbox": {
-                    "type": "vcs",
-                    "url": "https://gitlab+deploy-token-80:cbv5v_fwk1LoR3XWgcUx@esit-projekt.de/pfroch/esit_messagetoolbox_dev4"
-                }
-            }
-        }
+        "contao-manager-plugin": "Esit\\Messagetoolbox\\Classes\\Contao\\Manager\\Plugin"
     }
 }
