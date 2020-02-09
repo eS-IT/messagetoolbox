@@ -1,4 +1,4 @@
-Current Changes
+1.0.4Fixed: wrong covers comment
 Close #2 - Added code covere
 1.0.3
 Close #1 - Übersetzungen in die README aufnehmen
