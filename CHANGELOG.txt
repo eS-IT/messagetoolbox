@@ -1,3 +1,5 @@
+Current Changes
+Close #2 - Added code covere
 1.0.3
 Close #1 - Übersetzungen in die README aufnehmen
 1.0.2CHANGED: Neue Version des Testimages eingefügt

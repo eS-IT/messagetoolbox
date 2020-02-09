@@ -24,9 +24,6 @@ class SessionMessageTest extends EsitTestCase
 {
 
 
-    /**
-     * @covers SessionMessage::getSessionKey
-     */
     public function testSetSessionKey(): void
     {
         $sess       = $this->createMock(Session::class);
