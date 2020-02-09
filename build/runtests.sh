@@ -53,7 +53,7 @@ function myshortecho() {
 # Header
 #
 echo -e "\e[1;96m\n================================================================================"
-echo -e "e@sy Solutions IT - Test Suite by Patrick Froch - Version: 1.0.0"
+echo -e "e@sy Solutions IT - Test Suite by Patrick Froch - Version: 1.0.1"
 echo -e "--------------------------------------------------------------------------------\n\e[0m"
 
 
@@ -69,7 +69,7 @@ do
         ;;
 
     *)          # unknown option
-        myError "Parameter [${1}] unbekannt!"
+        myerror "Parameter [${1}] unbekannt!"
         #shift  # Kein shift, da kein Wert übergeben wird!
         ;;
     esac
@@ -89,7 +89,7 @@ classesFolder='./Classes'
 if [[ -f /home/pfroch/bin/gitchangelog ]]
 then
     myshortecho "Erstelle CHANGELOG.txt"
-    /home/pfroch/bin/gitchangelog
+    /home/pfroch/bin/gitchangelog `pwd`
 else
     myshortecho "/home/pfroch/bin/gitchangelog nicht gefunden!"
 fi
@@ -289,7 +289,7 @@ if [[ -f ${toolFolder}/phpunit ]]
 then
     # PHPUnit als Phar in build installiert
     myecho "Führe UnitTests mit Phar PHPUnit durch"
-    ${toolFolder}/phpunit --configuration ${configFolder}/phpunit/phpunit.xml.dist
+    ${toolFolder}/phpunit --configuration ${configFolder}/phpunit/phpunit.xml.dist --testdox
     tmperr=$?
 
     if [[ ${tmperr} -ne 0 ]]
@@ -302,7 +302,7 @@ else
     then
         # PHPUnit gobal mit composer installiert
         myecho "Führe UnitTests mit globalem PHPUnit durch"
-        ../../../vendor/bin/phpunit --configuration ${configFolder}/phpunit/phpunit.xml.dist
+        ../../../vendor/bin/phpunit --configuration ${configFolder}/phpunit/phpunit.xml.dist --testdox
         tmperr=$?
 
         if [[ ${tmperr} -ne 0 ]]

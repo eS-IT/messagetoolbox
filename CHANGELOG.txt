@@ -1,13 +1,6 @@
-Current Changes
+1.0.3
 Close #1 - Übersetzungen in die README aufnehmen
-
-1.0.2
-CHANGED: Neue Version des Testimages eingefügt
-
-1.0.1
-FIXED: Falsche PHPUnit-Version
-
-1.0.0
-ADDED: UnitTests
+1.0.2CHANGED: Neue Version des Testimages eingefügt
+1.0.1FIXED: Falsche PHPUnit-Version
+1.0.0ADDED: UnitTests
 INITIALER COMMIT
-

@@ -43,7 +43,7 @@ class SessionMessageTest extends EsitTestCase
 
     public function testAddMessage(): void
     {
-        $sess       = $this->getMockBuilder(Session::class)->onlyMethods(['set', 'get'])->getMock();
+        $sess       = $this->getMockBuilder(Session::class)->setMethods(['set', 'get'])->getMock();
         $sess->expects($this->once())
              ->method('set')
              ->with($this->equalTo('esitsessionmessage'), $this->equalTo('a:1:{i:0;s:4:"test";}'));
@@ -85,7 +85,7 @@ class SessionMessageTest extends EsitTestCase
 
     public function testDeleteMessages(): void
     {
-        $sess       = $this->getMockBuilder(Session::class)->onlyMethods(['remove'])->getMock();
+        $sess       = $this->getMockBuilder(Session::class)->setMethods(['remove'])->getMock();
         $sess->expects($this->once())->method('remove')->with($this->equalTo('esitsessionmessage'));
         $template   = $this->createMock(FrontendTemplate::class);
         $sm         = new SessionMessage($sess, $template);
@@ -122,7 +122,7 @@ class SessionMessageTest extends EsitTestCase
 
     public function testOutputDeletesMessagesIfParameterIsTrue(): void
     {
-        $sess       = $this->getMockBuilder(Session::class)->onlyMethods(['get', 'remove'])->getMock();
+        $sess       = $this->getMockBuilder(Session::class)->setMethods(['get', 'remove'])->getMock();
         $sess->expects($this->once())->method('remove')->with($this->equalTo('esitsessionmessage'));
         $sess->expects($this->once())->method('get')->with($this->equalTo('esitsessionmessage'));
         $template   = $this->createMock(FrontendTemplate::class);
