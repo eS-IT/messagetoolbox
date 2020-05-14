@@ -268,12 +268,6 @@ $GLOBALS['TL_CTE']['messagetoolbox']['cemassage'] = \Esit\Messagetoolbox\Classes
  * source code by registering callback functions to be executed on a particular
  * event. For more information see https://contao.org/manual.html.
  */
-$GLOBALS['TL_HOOKS']['createNewUser'][]     = array(\Esit\Fememberadmin\Classes\Contao\Form\FormDataManipulator::class, 'addMemberGroup');
-$GLOBALS['TL_HOOKS']['addCustomRegexp'][]   = array(\Esit\Fememberadmin\Classes\Contao\Hooks\CustomerGroupRgxp::class, 'checkMemberGroup');
-
-// Automatische Löschen ist erst einmal raus, soll später aber kommen.
-// @see https://total-kreativ.de/pfroch/meibers_fememberadmin_dev4/issues/127
-//$GLOBALS['TL_HOOKS']['postLogin'][]         = array(\Esit\Fememberadmin\Classes\Contao\Hooks\UserLogin::class, 'deleteOldResdConfimation');
 
 
 /**
@@ -288,38 +282,3 @@ $GLOBALS['TL_HOOKS']['addCustomRegexp'][]   = array(\Esit\Fememberadmin\Classes\
  * When rebuilding the search index URLs, Contao needs to know about these
  * keywords so it can handle them properly.
  */
-
-
-/**
- * FeMemberAdmin
- */
-$GLOBALS['FEMEMBERADMIN']['feform']['fieldwhitelist'] = [
-    'text',
-    'password',
-    'textarea',
-    'select',
-    'checkbox',
-    'radio',
-    #'radioTable',
-    #'imageSize',
-    #'inputUnit',
-    #'trbl',
-    #'chmod',
-    //'pageTree',
-    //'fileTree',
-    #'tableWizard',
-    #'timePeriod',
-    #'listWizard',
-    #'optionWizard',
-    #'moduleWizard',
-    //'checkboxWizard'
-];
-
-// Art der Lesebestätigung: nur eine möglich (single), oder mehrere für verschiedene Dokumente (multiple)
-$GLOBALS['FEMEMBERADMIN']['readconfirmation']['count'] = 'single'; // [single|multiple]
-
-// Vorgabewerte, wenn in den Contaoeinstellungen keine hinterlegt sind.
-$GLOBALS['FEMEMBERADMIN']['customerSettings']['default'] = [
-    'timetodeletereadconfirmation'  => 10,
-    'newmembermaxcount'             => 20
-];

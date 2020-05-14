@@ -1,8 +1,19 @@
-1.0.4Fixed: wrong covers comment
+Current Changes
+Changed: easysolutionsit/contao-testsuite from 1.0.3 to 1.0.4
+
+1.0.4
+Fixed: wrong covers comment
 Close #2 - Added code covere
+
 1.0.3
 Close #1 - Übersetzungen in die README aufnehmen
-1.0.2CHANGED: Neue Version des Testimages eingefügt
-1.0.1FIXED: Falsche PHPUnit-Version
-1.0.0ADDED: UnitTests
+
+1.0.2
+CHANGED: Neue Version des Testimages eingefügt
+
+1.0.1
+FIXED: Falsche PHPUnit-Version
+
+1.0.0
+ADDED: UnitTests
 INITIALER COMMIT

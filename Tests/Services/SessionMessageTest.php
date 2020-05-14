@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 /**
- * @package     fememberadmin
+ * @package     messagetoolbox
  * @filesource  SessionMessageTest.php
  * @version     1.0.0
  * @since       04.07.19 - 17:44
@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Class SessionMessageTest
- * @package Esit\Fememberadmin\Tests\Services
+ * @package Esit\Messagetoolbox\Tests\Services
  */
 class SessionMessageTest extends EsitTestCase
 {
