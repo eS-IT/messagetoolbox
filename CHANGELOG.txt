@@ -1,3 +1,6 @@
+1.0.6
+Close #4 - Service esit_messagetoolbox.services.session.message auf public setzten
+
 1.0.5
 Close #3 - Konfiguration korrigieren
 Changed: easysolutionsit/contao-testsuite from 1.0.3 to 1.0.4
