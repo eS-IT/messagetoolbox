@@ -1,4 +1,5 @@
-Current Changes
+1.0.5
+Close #3 - Konfiguration korrigieren
 Changed: easysolutionsit/contao-testsuite from 1.0.3 to 1.0.4
 
 1.0.4
