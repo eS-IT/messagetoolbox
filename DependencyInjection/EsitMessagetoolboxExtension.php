@@ -1,14 +1,16 @@
-<?php declare(strict_types = 1);
+<?php
+
 /**
- * @package     messagetoolbox
- * @filesource  EsitMessagetoolboxExtension.php
- * @version     1.0.0
+ * @package     Messagetoolbox
  * @since       14.11.2019 - 10:30
  * @author      Patrick Froch <info@easySolutionsIT.de>
- * @link        http://easySolutionsIT.de
+ * @see         http://easySolutionsIT.de
  * @copyright   e@sy Solutions IT 2019
- * @license     EULA
+ * @license     LGPL-3.0-or-later
  */
+
+declare(strict_types=1);
+
 namespace Esit\Messagetoolbox\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
@@ -16,16 +18,12 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-/**
- * Class EsitMessagetoolboxExtension
- * @package Esit\Messagetoolbox\DependencyInjection
- */
 class EsitMessagetoolboxExtension extends Extension
 {
 
 
     /**
-     * Lädt die Konfigurationen
+     * Lädt die Konfigurationen.
      * @param array            $mergedConfig
      * @param ContainerBuilder $container
      * @throws \Exception

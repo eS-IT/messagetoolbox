@@ -1,14 +1,16 @@
-<?php declare(strict_types=1);
+<?php
+
 /**
- * @package     messagetoolbox
- * @filesource  SessionMessageTest.php
- * @version     1.0.0
+ * @package     Messagetoolbox
  * @since       04.07.19 - 17:44
  * @author      Patrick Froch <info@easySolutionsIT.de>
- * @link        http://easySolutionsIT.de
+ * @see         http://easySolutionsIT.de
  * @copyright   e@sy Solutions IT 2019
- * @license     EULA
+ * @license     LGPL-3.0-or-later
  */
+
+declare(strict_types=1);
+
 namespace Esit\Messagetoolbox\Tests\Services;
 
 use Contao\FrontendTemplate;
@@ -16,10 +18,6 @@ use Esit\Messagetoolbox\Classes\Services\SessionMessage;
 use Esit\Messagetoolbox\EsitTestCase;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-/**
- * Class SessionMessageTest
- * @package Esit\Messagetoolbox\Tests\Services
- */
 class SessionMessageTest extends EsitTestCase
 {
 
@@ -29,7 +27,7 @@ class SessionMessageTest extends EsitTestCase
         $sess       = $this->createMock(Session::class);
         $template   = $this->createMock(FrontendTemplate::class);
         $sm         = new SessionMessage($sess, $template);
-        $key    = $sm->getSessionKey();
+        $key        = $sm->getSessionKey();
         $this->assertEquals('esitsessionmessage', $key);
 
         $sm->setSessionKey('testsessionkey');
@@ -40,11 +38,14 @@ class SessionMessageTest extends EsitTestCase
 
     public function testAddMessage(): void
     {
-        $sess       = $this->getMockBuilder(Session::class)->setMethods(['set', 'get'])->getMock();
+        $sess       = $this->getMockBuilder(Session::class)->getMock();
+
         $sess->expects($this->once())
              ->method('set')
              ->with($this->equalTo('esitsessionmessage'), $this->equalTo('a:1:{i:0;s:4:"test";}'));
+
         $sess->method('get')->willReturn(\serialize([]));
+
         $template   = $this->createMock(FrontendTemplate::class);
         $sm         = new SessionMessage($sess, $template);
         $sm->addMessage('test');
@@ -82,7 +83,7 @@ class SessionMessageTest extends EsitTestCase
 
     public function testDeleteMessages(): void
     {
-        $sess       = $this->getMockBuilder(Session::class)->setMethods(['remove'])->getMock();
+        $sess       = $this->getMockBuilder(Session::class)->getMock();
         $sess->expects($this->once())->method('remove')->with($this->equalTo('esitsessionmessage'));
         $template   = $this->createMock(FrontendTemplate::class);
         $sm         = new SessionMessage($sess, $template);
@@ -119,7 +120,7 @@ class SessionMessageTest extends EsitTestCase
 
     public function testOutputDeletesMessagesIfParameterIsTrue(): void
     {
-        $sess       = $this->getMockBuilder(Session::class)->setMethods(['get', 'remove'])->getMock();
+        $sess       = $this->getMockBuilder(Session::class)->getMock();
         $sess->expects($this->once())->method('remove')->with($this->equalTo('esitsessionmessage'));
         $sess->expects($this->once())->method('get')->with($this->equalTo('esitsessionmessage'));
         $template   = $this->createMock(FrontendTemplate::class);

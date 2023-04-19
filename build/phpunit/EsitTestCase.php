@@ -1,14 +1,16 @@
-<?php declare(strict_types=1);
+<?php
+
 /**
- * @author      pfroch <info@easySolutionsIT.de>
- * @link        http://easySolutionsIT.de
- * @copyright   e@sy Solutions IT 2014
- * @license     EULA
- * @package     <#project#>
- * @filesource  EsitTestCase.php
- * @version     2.0.0
- * @since       06.03.14 - 16:47
+ * @package     Messagetoolbox
+ * @since       14.11.2019 - 10:30
+ * @author      Patrick Froch <info@easySolutionsIT.de>
+ * @see         http://easySolutionsIT.de
+ * @copyright   e@sy Solutions IT 2019
+ * @license     LGPL-3.0-or-later
  */
+
+declare(strict_types=1);
+
 namespace Esit\Messagetoolbox;
 
 use Contao\TestCase\ContaoTestCase;
@@ -17,9 +19,6 @@ use Doctrine\DBAL\Driver\Statement;
 use Doctrine\DBAL\Query\QueryBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
 
-/**
- * Class EsitTestCase
- */
 class EsitTestCase extends ContaoTestCase
 {
 

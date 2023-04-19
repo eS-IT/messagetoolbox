@@ -1,22 +1,20 @@
-<?php declare(strict_types=1);
+<?php
+
 /**
- * @package     messagetoolbox
- * @filesource  EsitMessagetoolboxBundle.php
- * @version     1.0.0
+ * @package     Messagetoolbox
  * @since       14.11.2019 - 10:30
  * @author      Patrick Froch <info@easySolutionsIT.de>
- * @link        http://easySolutionsIT.de
+ * @see         http://easySolutionsIT.de
  * @copyright   e@sy Solutions IT 2019
- * @license     EULA
+ * @license     LGPL-3.0-or-later
  */
+
+declare(strict_types=1);
+
 namespace Esit\Messagetoolbox;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-/**
- * Class EsitMessagetoolboxBundle
- * @package Esit\Messagetoolbox
- */
 class EsitMessagetoolboxBundle extends Bundle
 {
 }

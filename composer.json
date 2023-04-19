@@ -1,7 +1,7 @@
 {
     "name": "esit/messagetoolbox",
     "description": "Mit dieser Toolbox können Rückmeldungen an den Nutzer einer Seite im Frontend ausgegeben werden. Die Meldungen werden in der Session zwischengespeichert und können z.B. nach dem Redirect bim Speichern eines Formulars ausgegeben werden.",
-    "license": "proprietary",
+    "license": "LGPL-3.0-or-later",
     "type": "contao-bundle",
     "authors": [
         {
@@ -12,18 +12,18 @@
         }
     ],
     "support": {
-        "email": "info@easySolutionsIT.de"
+        "email": "info@easySolutionsIT.de",
+        "issues": "https://github.com/eS-IT/databaselayer/issues",
+        "docs": "https://github.com/eS-IT/databaselayer/blob/main/README.md"
     },
+    "readme": "README.md",
     "require": {
-        "php": ">=7.1",
-        "contao/core-bundle": "~4.4",
-        "contao/manager-bundle": "~4.4",
-        "contao/conflicts": "@dev"
+        "php": "~8.0",
+        "contao/core-bundle": "~4.13||^5.1"
     },
     "require-dev": {
-        "contao/test-case": "^4.0",
-        "roave/security-advisories": "dev-master",
-        "phpunit/phpunit": "^8.4"
+        "contao/test-case": "^4.13",
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {

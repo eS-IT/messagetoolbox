@@ -1,10 +1,14 @@
-# Services
 services:
-    esit_messagetoolbox.services.session.message:
-        class: Esit\Messagetoolbox\Classes\Services\SessionMessage
-        arguments: ["@session", "@esit_messagetoolbox.wrapper.frontend.template"]
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    # Services
+    Esit\Messagetoolbox\Classes\Services\ScopeHelper:
+        public: true
+
+    Esit\Messagetoolbox\Classes\Services\SessionMessage:
         public: true
 
     # Wrapper
-    esit_messagetoolbox.wrapper.frontend.template:
-        class: Contao\FrontendTemplate
+    Contao\FrontendTemplate:

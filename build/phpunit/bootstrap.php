@@ -1,14 +1,15 @@
 <?php
+
 /**
- * @author      pfroch <info@easySolutionsIT.de>
- * @link        http://easySolutionsIT.de
- * @copyright   e@sy Solutions IT 2014
- * @license     EULA
- * @package     esitlib
- * @filesource  bootstrap.php
- * @version     2.0.0
- * @since       21.03.14 - 09:54
+ * @package     Messagetoolbox
+ * @since       14.11.2019 - 10:30
+ * @author      Patrick Froch <info@easySolutionsIT.de>
+ * @see         http://easySolutionsIT.de
+ * @copyright   e@sy Solutions IT 2019
+ * @license     LGPL-3.0-or-later
  */
+
+declare(strict_types=1);
 
  /**
   * include esit_contaoTestCase

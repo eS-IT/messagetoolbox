@@ -1,26 +1,25 @@
-<?php declare(strict_types = 1);
+<?php
+
 /**
  * @package     messagetoolbox
- * @filesource  ContentMessages.php
- * @version     1.0.0
  * @since       14.11.19 - 11:11
  * @author      Patrick Froch <info@easySolutionsIT.de>
- * @see        http://easySolutionsIT.de
+ * @see         http://easySolutionsIT.de
  * @copyright   e@sy Solutions IT 2019
- * @license     EULA
+ * @license     LGPL-3.0-or-later
  */
+
+declare(strict_types=1);
+
 namespace Esit\Messagetoolbox\Classes\Contao\Elements;
 
+use Contao\ContentElement;
 use Contao\System;
+use Esit\Messagetoolbox\Classes\Services\ScopeHelper;
+use Esit\Messagetoolbox\Classes\Services\SessionMessage;
 
-/**
- * Class ContentMessages
- * @package Messagetoolbox\Classes\Contao\Elements
- */
-class ContentMessages extends \ContentElement
+class ContentMessages extends ContentElement
 {
-
-
     /**
      * Template
      * @var string
@@ -33,7 +32,10 @@ class ContentMessages extends \ContentElement
      */
     protected function compile(): void
     {
-        if ('BE' === TL_MODE) {
+        /** @var ScopeHelper $matcher */
+        $matcher = System::getContainer()->get(ScopeHelper::class);
+
+        if (true === $matcher->isBackend()) {
             $this->genBeOutput();
         } else {
             $this->genFeOutput();
@@ -48,8 +50,8 @@ class ContentMessages extends \ContentElement
     {
         $this->strTemplate        = 'be_wildcard';
         $this->Template           = new \BackendTemplate($this->strTemplate);
-        $this->Template->title    = $this->headline;
-        $this->Template->wildcard = '### ContentMessages ###';
+        $this->Template->title    = $this->headline;            // @phpstan-ignore-line
+        $this->Template->wildcard = '### ContentMessages ###';  // @phpstan-ignore-line
     }
 
 
@@ -58,7 +60,8 @@ class ContentMessages extends \ContentElement
      */
     protected function genFeOutput(): void
     {
-        $sm                         = System::getContainer()->get('esit_messagetoolbox.services.session.message');
-        $this->Template->content    = $sm->ouput();
+        /** @var SessionMessage $sm */
+        $sm                         = System::getContainer()->get(SessionMessage::class);
+        $this->Template->content    = $sm->output();
     }
 }
