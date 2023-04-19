@@ -16,7 +16,8 @@ namespace Esit\Messagetoolbox\Tests\Services;
 use Contao\FrontendTemplate;
 use Esit\Messagetoolbox\Classes\Services\SessionMessage;
 use Esit\Messagetoolbox\EsitTestCase;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class SessionMessageTest extends EsitTestCase
 {
@@ -24,9 +25,11 @@ class SessionMessageTest extends EsitTestCase
 
     public function testSetSessionKey(): void
     {
-        $sess       = $this->createMock(Session::class);
+        $sess       = $this->getMockBuilder(SessionInterface::class)->disableOriginalConstructor()->getMock();
+        $stack      = $this->createMock(RequestStack::class);
+        $stack->method('getSession')->willReturn($sess);
         $template   = $this->createMock(FrontendTemplate::class);
-        $sm         = new SessionMessage($sess, $template);
+        $sm         = new SessionMessage($stack, $template);
         $key        = $sm->getSessionKey();
         $this->assertEquals('esitsessionmessage', $key);
 
@@ -38,7 +41,9 @@ class SessionMessageTest extends EsitTestCase
 
     public function testAddMessage(): void
     {
-        $sess       = $this->getMockBuilder(Session::class)->getMock();
+        $sess       = $this->getMockBuilder(SessionInterface::class)->disableOriginalConstructor()->getMock();
+        $stack      = $this->createMock(RequestStack::class);
+        $stack->method('getSession')->willReturn($sess);
 
         $sess->expects($this->once())
              ->method('set')
@@ -47,7 +52,7 @@ class SessionMessageTest extends EsitTestCase
         $sess->method('get')->willReturn(\serialize([]));
 
         $template   = $this->createMock(FrontendTemplate::class);
-        $sm         = new SessionMessage($sess, $template);
+        $sm         = new SessionMessage($stack, $template);
         $sm->addMessage('test');
     }
 
@@ -58,11 +63,13 @@ class SessionMessageTest extends EsitTestCase
      */
     public function testGetMessages(array $messages): void
     {
-        $sess       = $this->createMock(Session::class);
+        $sess       = $this->getMockBuilder(SessionInterface::class)->disableOriginalConstructor()->getMock();
+        $stack      = $this->createMock(RequestStack::class);
+        $stack->method('getSession')->willReturn($sess);
         $sess->method('set')->willReturn(null);
         $sess->method('get')->willReturn(\serialize($messages));
         $template   = $this->createMock(FrontendTemplate::class);
-        $sm         = new SessionMessage($sess, $template);
+        $sm         = new SessionMessage($stack, $template);
 
         if (\count($messages)) {
             $this->assertEquals($messages, $sm->getMessages());
@@ -83,10 +90,12 @@ class SessionMessageTest extends EsitTestCase
 
     public function testDeleteMessages(): void
     {
-        $sess       = $this->getMockBuilder(Session::class)->getMock();
+        $sess       = $this->getMockBuilder(SessionInterface::class)->disableOriginalConstructor()->getMock();
+        $stack      = $this->createMock(RequestStack::class);
+        $stack->method('getSession')->willReturn($sess);
         $sess->expects($this->once())->method('remove')->with($this->equalTo('esitsessionmessage'));
         $template   = $this->createMock(FrontendTemplate::class);
-        $sm         = new SessionMessage($sess, $template);
+        $sm         = new SessionMessage($stack, $template);
         $sm->deleteMessages();
     }
 
@@ -94,11 +103,13 @@ class SessionMessageTest extends EsitTestCase
     public function testOutputReturnStringIfMessagesAreNotEmpty(): void
     {
         $content    = \serialize(['This is content!']);
-        $sess       = $this->createMock(Session::class);
+        $sess       = $this->getMockBuilder(SessionInterface::class)->disableOriginalConstructor()->getMock();
+        $stack      = $this->createMock(RequestStack::class);
+        $stack->method('getSession')->willReturn($sess);
         $sess->method('get')->willReturn($content);
         $template   = $this->createMock(FrontendTemplate::class);
         $template->method('parse')->willReturn($content);
-        $sm         = new SessionMessage($sess, $template);
+        $sm         = new SessionMessage($stack, $template);
         $rtn        = $sm->output(false);
 
         $this->assertEquals($content, $rtn);
@@ -108,10 +119,12 @@ class SessionMessageTest extends EsitTestCase
     public function testOutputReturnEmptyStringIfMessagesAreEmpty(): void
     {
         $content    = '';
-        $sess       = $this->createMock(Session::class);
+        $sess       = $this->getMockBuilder(SessionInterface::class)->disableOriginalConstructor()->getMock();
+        $stack      = $this->createMock(RequestStack::class);
+        $stack->method('getSession')->willReturn($sess);
         $sess->method('get')->willReturn($content);
         $template   = $this->createMock(FrontendTemplate::class);
-        $sm         = new SessionMessage($sess, $template);
+        $sm         = new SessionMessage($stack, $template);
         $rtn        = $sm->output(false);
 
         $this->assertEmpty($rtn);
@@ -120,11 +133,13 @@ class SessionMessageTest extends EsitTestCase
 
     public function testOutputDeletesMessagesIfParameterIsTrue(): void
     {
-        $sess       = $this->getMockBuilder(Session::class)->getMock();
+        $sess       = $this->getMockBuilder(SessionInterface::class)->disableOriginalConstructor()->getMock();
+        $stack      = $this->createMock(RequestStack::class);
+        $stack->method('getSession')->willReturn($sess);
         $sess->expects($this->once())->method('remove')->with($this->equalTo('esitsessionmessage'));
         $sess->expects($this->once())->method('get')->with($this->equalTo('esitsessionmessage'));
         $template   = $this->createMock(FrontendTemplate::class);
-        $sm         = new SessionMessage($sess, $template);
+        $sm         = new SessionMessage($stack, $template);
         $sm->output(true);
     }
 }

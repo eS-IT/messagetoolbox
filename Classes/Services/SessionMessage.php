@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Esit\Messagetoolbox\Classes\Services;
 
 use Contao\FrontendTemplate;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class SessionMessage
@@ -33,10 +34,9 @@ class SessionMessage
 
 
     /**
-     * @param SessionInterface $session
      * @param FrontendTemplate $template
      */
-    public function __construct(protected SessionInterface $session, protected FrontendTemplate $template)
+    public function __construct(protected RequestStack $requestStack, protected FrontendTemplate $template)
     {
         $this->template->setName($this->templateName);
     }
@@ -69,7 +69,8 @@ class SessionMessage
         $messages   = $this->getMessages();
         $messages[] = $msg;
         $messages   = \serialize($messages);
-        $this->session->set($this->getSessionKey(), $messages);
+        $session    = $this->requestStack->getSession();
+        $session->set($this->getSessionKey(), $messages);
     }
 
 
@@ -79,7 +80,9 @@ class SessionMessage
      */
     public function getMessages(): array
     {
-        $messages = $this->session->get($this->getSessionKey());
+
+        $session    = $this->requestStack->getSession();
+        $messages   = $session->get($this->getSessionKey());
 
         if (!empty($messages) && true  === \is_string($messages)) {
             $messages = @\unserialize($messages, [null]);
@@ -98,7 +101,8 @@ class SessionMessage
      */
     public function deleteMessages(): void
     {
-        $this->session->remove($this->getSessionKey());
+        $session = $this->requestStack->getSession();
+        $session->remove($this->getSessionKey());
     }
 
 

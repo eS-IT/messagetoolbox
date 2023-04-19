@@ -9,8 +9,6 @@ services:
 
     Esit\Messagetoolbox\Classes\Services\SessionMessage:
         public: true
-        arguments:
-            - "@session"
 
     # Wrapper
     Contao\FrontendTemplate:
