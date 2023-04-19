@@ -1,6 +1,6 @@
 {
     "name": "esit/messagetoolbox",
-    "description": "Mit dieser Toolbox können Rückmeldungen an den Nutzer einer Seite im Frontend ausgegeben werden. Die Meldungen werden in der Session zwischengespeichert und können z.B. nach dem Redirect bim Speichern eines Formulars ausgegeben werden.",
+    "description": "Mit dieser Toolbox können Rückmeldungen an den Nutzer einer Seite im Frontend ausgegeben werden. Die Meldungen werden in der Session zwischengespeichert und können z.B. nach dem Redirect beim Speichern eines Formulars ausgegeben werden.",
     "license": "LGPL-3.0-or-later",
     "type": "contao-bundle",
     "authors": [

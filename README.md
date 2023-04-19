@@ -8,7 +8,7 @@
 ## Beschreibung
 
 Mit dieser Toolbox können Rückmeldungen an den Nutzer einer Seite im Frontend ausgegeben werden. Die Meldungen werden
-in der Session zwischengespeichert und können z.B. nach dem Redirect bim Speichern eines Formulars ausgegeben werden.
+in der Session zwischengespeichert und können z.B. nach dem Redirect beim Speichern eines Formulars ausgegeben werden.
 
 
 ## Autor
