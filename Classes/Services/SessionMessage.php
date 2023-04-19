@@ -15,7 +15,6 @@ namespace Esit\Messagetoolbox\Classes\Services;
 
 use Contao\FrontendTemplate;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class SessionMessage
 {

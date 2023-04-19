@@ -25,7 +25,7 @@ Die Software wird unter LGPL-v3 veröffentlicht. Details sind in der Datei `LICE
 ## Voraussetzungen
 
 - php: ~8.0
-- contao/core-bundle: ~4.9|^5.1
+- contao/core-bundle: ~4.13|^5.1
 
 
 ## Installtion
