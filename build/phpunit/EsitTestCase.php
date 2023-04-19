@@ -80,13 +80,13 @@ class EsitTestCase extends ContaoTestCase
         if (!defined('TL_MODE')) {
             define('TL_MODE', $tlMode);
             define('TL_SCRIPT', $tlScript);
-            $initializePath = CONTAO_ROOT . "/system/initialize.php";
+            /*$initializePath = CONTAO_ROOT . "/system/initialize.php";
 
             if (is_file($initializePath)) {
                 require($initializePath);
             } else {
                 throw new \Exception(CONTAO_ROOT . "/system/initialize.php not found!");
-            }
+            }*/
         }
     }
 
