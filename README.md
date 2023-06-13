@@ -40,21 +40,23 @@ installieren.
 
 class MyClass {
 
+    public function __constructor() {
+        $this->sessMsg = \Contao\System::getContainer()->get(\Esit\Messagetoolbox\Classes\Services\SessionMessage::class);
+    }
+
     public function setMessage() {
-        $sm = \Contao\System::getContainer()->get('esit_messagetoolbox.services.session.message');
-        $sm->addMessage('languageKey_or_message');
+        $this->sessMsg->addMessage('languageKey_or_message');
     }
 
     public function getMessages() {
-        $sm         = \Contao\System::getContainer()->get('esit_messagetoolbox.services.session.message');
-        $messages   = $sm->getMessages();
-        $sm->deleteMessages();  // Delete all Messages!
-        var_dump($messages);    // Array of Messages!
+        $sm         = \Contao\System::getContainer()->get(\Esit\Messagetoolbox\Classes\Services\SessionMessage::class);
+        $messages   = $this->sessMsg->getMessages();
+        $this->sessMsg->deleteMessages();   // Delete all Messages!
+        var_dump($messages);                // Array of Messages!
     }
 
     public function outputMessages() {
-        $sm = \Contao\System::getContainer()->get('esit_messagetoolbox.services.session.message');
-        echo $sm->ouput();      // Output string with default template AND DELETES ALL MESSAGES!
+        echo $this->sessMsg->ouput();      // Output string with default template AND DELETES ALL MESSAGES!
     }
 }
 ```
