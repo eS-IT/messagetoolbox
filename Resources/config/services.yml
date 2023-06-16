@@ -1,7 +1,6 @@
 # Services
 services:
-    esit_messagetoolbox.services.session.message:
-        class: Esit\Messagetoolbox\Classes\Services\SessionMessage
+    Esit\Messagetoolbox\Classes\Services\SessionMessage:
         arguments: ["@session", "@esit_messagetoolbox.wrapper.frontend.template"]
         public: true
 

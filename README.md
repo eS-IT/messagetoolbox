@@ -14,22 +14,24 @@ Die Installation durch Eintragung in die composer.json, mittels Deploy Token.
 ```php
 <?php
 
+use Esit\Messagetoolbox\Classes\Services\SessionMessage;
+
 class MyClass {
 
     public function setMessage() {
-        $sm = \Contao\System::getContainer()->get('esit_messagetoolbox.services.session.message');
+        $sm = \Contao\System::getContainer()->get(SessionMessage::class);
         $sm->addMessage('languageKey_or_message');
     }
 
     public function getMessages() {
-        $sm         = \Contao\System::getContainer()->get('esit_messagetoolbox.services.session.message');
+        $sm         = \Contao\System::getContainer()->get(SessionMessage::class);
         $messages   = $sm->getMessages();
         $sm->deleteMessages();  // Delete all Messages!
         var_dump($messages);    // Array of Messages!
     }
 
     public function outputMessages() {
-        $sm = \Contao\System::getContainer()->get('esit_messagetoolbox.services.session.message');
+        $sm = \Contao\System::getContainer()->get(SessionMessage::class);
         echo $sm->ouput();      // Output string with default template AND DELETES ALL MESSAGES!
     }
 }

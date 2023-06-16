@@ -12,6 +12,7 @@
 namespace Esit\Messagetoolbox\Classes\Contao\Elements;
 
 use Contao\System;
+use Esit\Messagetoolbox\Classes\Services\SessionMessage;
 
 /**
  * Class ContentMessages
@@ -58,7 +59,7 @@ class ContentMessages extends \ContentElement
      */
     protected function genFeOutput(): void
     {
-        $sm                         = System::getContainer()->get('esit_messagetoolbox.services.session.message');
+        $sm                         = System::getContainer()->get(SessionMessage::class);
         $this->Template->content    = $sm->ouput();
     }
 }
